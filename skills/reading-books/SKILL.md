@@ -88,6 +88,8 @@ The commands should appear at the end of the content!
 *Caution*
 If "<path>" is a pdf file, then run the follow script to get the text in it before proceeding further:
 ```python
-from readany import read
-text = read("<path>")
+import fitz
+
+with fitz.open("file.pdf") as doc:
+    text = "".join(page.get_text() for page in doc)
 ```
